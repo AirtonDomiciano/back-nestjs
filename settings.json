@@ -1,0 +1,15 @@
+{
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "eslint.alwaysShowStatus": true,
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "html"
+    ],
+    "prettier.configPath": "./.prettierrc.json",
+    "prettier.eslintIntegration": true
+  }
