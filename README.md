@@ -42,10 +42,10 @@ git commit -m "[Descrição do commit]"
 
 
 ### 3 - Buscar os arquivos da origin master. 
-git fetch origin master
+git fetch origin main
 
 ### 4 - Unificar os arquivos da branch master com a atual. 
-git rebase origin/master
+git rebase origin/main
 
 ## Caso ocorrer conflitos
 ### 5 - Deverá corrigir os conflitos. Adicionar Arquivos ao repositório.
