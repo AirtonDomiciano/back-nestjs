@@ -1,25 +1,28 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('Usuario')
+@Entity('USUARIOS')
 export class Usuario {
-  @PrimaryGeneratedColumn({ type: 'int', name: 'ID' })
-  id: number;
+  @PrimaryGeneratedColumn({ type: 'int', name: 'ID_USUARIOS' })
+  idUsuarios: number;
 
-  @Column({ type: 'varchar', name: 'NOME' })
+  @Column({ type: 'varchar', name: 'NOME', nullable: false })
   nome: string;
 
-  @Column({ type: 'varchar', name: 'SOBRENOME' })
-  sobreNome: string;
+  @Column({ type: 'varchar', name: 'SOBRENOME', nullable: true })
+  sobreNome?: string;
 
-  @Column({ type: 'int', name: 'IDADE' })
-  idade: number;
+  @Column({ type: 'int', name: 'IDADE', nullable: true })
+  idade?: number;
 
-  @Column({ type: 'varchar', name: 'EMAIL' })
+  @Column({ type: 'varchar', name: 'EMAIL', nullable: false })
   email: string;
 
-  @Column({ type: 'int', name: 'CEP' })
-  cep: number;
+  @Column({ type: 'varchar', name: 'CEP', nullable: true })
+  cep?: string;
 
-  @Column({ type: 'varchar', name: 'FUNCAO' })
+  @Column({ type: 'varchar', name: 'FUNCAO', nullable: false })
   funcao: string;
+
+  @Column({ type: 'bit', name: 'ATIVO', nullable: false })
+  ativo: boolean;
 }
