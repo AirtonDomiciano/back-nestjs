@@ -9,4 +9,4 @@ import { ConexoesApiController } from './conexoes-api.controller';
   controllers: [ConexoesApiController],
   providers: [ConexoesApiService],
 })
-export class LinksModule {}
+export class ConexoesApiModule {}
