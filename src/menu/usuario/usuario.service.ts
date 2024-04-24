@@ -10,8 +10,30 @@ export class UsuarioService {
     private usuarioRepository: Repository<Usuario>,
   ) {}
 
-  async create(usuario: Usuario): Promise<Usuario> {
-    return await this.usuarioRepository.save(usuario);
+  async create(usuario: Usuario): Promise<Usuario | string> {
+    let verificacao = true;
+    let mensagem = '';
+
+    if (usuario.nome.length === 0 || usuario.nome === null) {
+      verificacao = false;
+      mensagem += 'O campo Nome é obrigatório!';
+    }
+
+    if (usuario.email.length === 0 || usuario.email === null) {
+      verificacao = false;
+      mensagem += 'O campo E-mail é obrigatório!';
+    }
+
+    if (usuario.funcao.length === 0 || usuario.funcao === null) {
+      verificacao = false;
+      mensagem += 'O campo Função é obrigatório!';
+    }
+
+    if (verificacao) {
+      return await this.usuarioRepository.save(usuario);
+    } else {
+      return mensagem;
+    }
   }
 
   async findAll(): Promise<Usuario[]> {
@@ -19,15 +41,39 @@ export class UsuarioService {
   }
 
   async findOne(id: number): Promise<Usuario> {
-    return await this.usuarioRepository.findOne({ where: { id: id } });
+    return await this.usuarioRepository.findOne({ where: { idUsuarios: id } });
   }
 
-  async update(id: number, usuario: Usuario): Promise<Usuario> {
-    const updatedUsuario = await this.usuarioRepository.save(usuario);
-    return updatedUsuario;
+  async update(id: number, usuario: Usuario): Promise<Usuario | string> {
+    let verificacao = true;
+    let mensagem = '';
+
+    if (usuario.nome.length === 0 || usuario.nome === null) {
+      verificacao = false;
+      mensagem += 'O campo Nome é obrigatório!';
+    }
+
+    if (usuario.email.length === 0 || usuario.email === null) {
+      verificacao = false;
+      mensagem += 'O campo E-mail é obrigatório!';
+    }
+
+    if (usuario.funcao.length === 0 || usuario.funcao === null) {
+      verificacao = false;
+      mensagem += 'O campo Função é obrigatório!';
+    }
+
+    if (verificacao) {
+      const updatedUsuario = await this.usuarioRepository.save(usuario);
+      return updatedUsuario;
+    } else {
+      return mensagem;
+    }
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: number): Promise<string> {
     await this.usuarioRepository.delete(id);
+    const mensagem = 'Usuário deletado!';
+    return mensagem;
   }
 }
