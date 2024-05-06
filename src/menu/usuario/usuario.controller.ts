@@ -15,7 +15,7 @@ export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Post()
-  create(@Body() usuario: Usuario): Promise<Usuario> {
+  create(@Body() usuario: Usuario): Promise<Usuario | string> {
     return this.usuarioService.create(usuario);
   }
 
@@ -30,12 +30,15 @@ export class UsuarioController {
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() usuario: Usuario): Promise<Usuario> {
+  update(
+    @Param('id') id: number,
+    @Body() usuario: Usuario,
+  ): Promise<Usuario | string> {
     return this.usuarioService.update(id, usuario);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number): Promise<void> {
+  remove(@Param('id') id: number): Promise<string> {
     return this.usuarioService.remove(id);
   }
 }
