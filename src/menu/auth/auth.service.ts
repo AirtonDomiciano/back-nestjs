@@ -48,7 +48,7 @@ export class AuthService {
         token: this.cryptoService.generateJWT(user.senha),
         name: user.nome,
         email: email,
-        idUser: user.id,
+        idUser: user.idUsuarios,
       },
     };
   }
