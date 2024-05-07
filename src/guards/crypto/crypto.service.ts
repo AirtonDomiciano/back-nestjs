@@ -25,7 +25,7 @@ export class CryptoService {
   }
 
   generateJWT(pass: string, expiresIn = 24 * 60 * 60): string {
-    return jwt.sign({ id: pass }, process.env.CRYPT, {
+    return jwt.sign({ id: pass }, process.env.CRYPT || 'aulas_xpert', {
       expiresIn: expiresIn,
     });
   }

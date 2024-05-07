@@ -20,18 +20,19 @@ export class AuthService {
   }): Promise<Response<Payload>> {
     const { email, password } = input;
     if (!email) {
-      throw new Error('');
+      throw new Error('Erro de email');
     }
 
     if (!password) {
-      throw new Error('');
+      throw new Error('Erro de Senha');
     }
 
     const user = await this.usuarioRepository.findOne({
       where: { email: email },
     });
 
-    if (password !== user.senha) {
+    if (!user?.senha && password !== user?.senha) {
+      throw new Error('Usuário não possui acesso');
     }
 
     // const cryptoPass = this.cryptoService.cryptAES(password);
@@ -41,7 +42,7 @@ export class AuthService {
     //   user.senha,
     // );
 
-    return {
+    const obj = {
       success: true,
       message: '',
       data: {
@@ -51,6 +52,8 @@ export class AuthService {
         idUser: user.idUsuarios,
       },
     };
+
+    return obj;
   }
 
   async createUser(usuario: Usuario): Promise<Usuario> {

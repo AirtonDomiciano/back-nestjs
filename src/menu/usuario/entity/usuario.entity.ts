@@ -11,7 +11,7 @@ export class Usuario {
   @Column({ type: 'varchar', name: 'SENHA' })
   senha: string;
 
-  @Column({ type: 'varchar', name: 'SOBRENOME' , nullable: true  })
+  @Column({ type: 'varchar', name: 'SOBRENOME', nullable: true })
   sobreNome?: string;
 
   @Column({ type: 'int', name: 'IDADE', nullable: true })
