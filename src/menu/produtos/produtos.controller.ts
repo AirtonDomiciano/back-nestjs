@@ -10,8 +10,8 @@ import {
 import { ProdutosService } from './produtos.service';
 import { Produtos } from './entities/produtos.entity';
 
-@Controller('entidades')
-export class EntidadesController {
+@Controller('produtos')
+export class ProdutosController {
   constructor(private readonly produtosService: ProdutosService) {}
 
   @Post()

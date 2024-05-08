@@ -18,7 +18,9 @@ export class AuthService {
     email: string;
     password: string;
   }): Promise<Response<Payload>> {
+    const obj: Response<Payload> = new Response<Payload>();
     const { email, password } = input;
+
     if (!email) {
       throw new Error('Erro de email');
     }
@@ -32,7 +34,18 @@ export class AuthService {
     });
 
     if (!user?.senha && password !== user?.senha) {
-      throw new Error('Usuário não possui acesso');
+      obj.success = false;
+      obj.message = 'Usuário não tem acesso.';
+    } else {
+      obj.success = true;
+      obj.message = 'Deu boa';
+
+      obj.data = {
+        token: this.cryptoService.generateJWT(user.senha),
+        name: user.nome,
+        email: email,
+        idUser: user.idUsuarios,
+      };
     }
 
     // const cryptoPass = this.cryptoService.cryptAES(password);
@@ -41,17 +54,6 @@ export class AuthService {
     //   cryptoPass,
     //   user.senha,
     // );
-
-    const obj = {
-      success: true,
-      message: '',
-      data: {
-        token: this.cryptoService.generateJWT(user.senha),
-        name: user.nome,
-        email: email,
-        idUser: user.idUsuarios,
-      },
-    };
 
     return obj;
   }
