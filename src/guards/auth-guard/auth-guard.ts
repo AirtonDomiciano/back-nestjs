@@ -5,11 +5,16 @@ import * as jwt from 'jsonwebtoken';
 export class AuthGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean | Promise<boolean> {
     const request = context.switchToHttp().getRequest();
-    const token = request.headers.authorization;
+    const proc = process.env.CRYPT || 'aulas_xpert';
+    let token = request.headers.authorization;
 
     const routesException = ['/auth/login', '/auth/createUser'];
     if (!routesException.includes(request.route.path)) {
-      jwt.verify(token, process.env.CRYPT, function (err, decoded) {
+      if (token?.length) {
+        token = token.replace('Bearer ', '');
+      }
+
+      jwt.verify(token, proc, function (err, decoded) {
         if (err) {
           console.log(err, decoded);
           throw new Error('Não autorizado. Efetue login para continuar!');
