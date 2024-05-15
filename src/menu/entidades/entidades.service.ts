@@ -19,7 +19,9 @@ export class EntidadesService {
   }
 
   async findOne(id: number): Promise<Entidades> {
-    return await this.entidadeRepository.findOne({ where: { id: id } });
+    return await this.entidadeRepository.findOne({
+      where: { idEntidades: id },
+    });
   }
 
   async update(id: number, entidade: Entidades): Promise<Entidades> {
