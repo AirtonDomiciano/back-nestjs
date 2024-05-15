@@ -1,9 +1,10 @@
 import { Controller, Post } from '@nestjs/common';
-import { Body } from '@nestjs/common/decorators';
+import { Body, Get } from '@nestjs/common/decorators';
 import { AuthService } from './auth.service';
 import { Response } from 'src/shared/interfaces/response';
 import Payload from 'src/shared/interfaces/payload';
 import { Usuario } from '../usuario/entity/usuario.entity';
+import { Entidades } from '../entidades/entities/entidades.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -19,6 +20,11 @@ export class AuthController {
   @Post('createUser')
   create(@Body() usuario: Usuario): Promise<Usuario> {
     return this.service.createUser(usuario);
+  }
+
+  @Get('entidades')
+  findAll(): Promise<Entidades[]> {
+    return this.service.findAllEntidades();
   }
 
   // @Post('loginWithDevice')
