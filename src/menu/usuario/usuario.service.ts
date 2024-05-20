@@ -24,11 +24,6 @@ export class UsuarioService {
       mensagem += 'O campo E-mail é obrigatório!';
     }
 
-    if (usuario.funcao.length === 0 || usuario.funcao === null) {
-      verificacao = false;
-      mensagem += 'O campo Função é obrigatório!';
-    }
-
     if (verificacao) {
       return await this.usuarioRepository.save(usuario);
     } else {
@@ -56,11 +51,6 @@ export class UsuarioService {
     if (usuario.email.length === 0 || usuario.email === null) {
       verificacao = false;
       mensagem += 'O campo E-mail é obrigatório!';
-    }
-
-    if (usuario.funcao.length === 0 || usuario.funcao === null) {
-      verificacao = false;
-      mensagem += 'O campo Função é obrigatório!';
     }
 
     if (verificacao) {
