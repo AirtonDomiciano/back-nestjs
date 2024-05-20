@@ -1,11 +1,11 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('ENTIDADES')
-export class Entidades {
-  @PrimaryGeneratedColumn({ type: 'int', name: 'ID_ENTIDADES' })
+@Entity('CLIENTES')
+export class Clientes {
+  @PrimaryGeneratedColumn({ type: 'int', name: 'ID_CLIENTES' })
   idEntidades: number;
 
-  @Column({ type: 'varchar', name: 'NOMEENTIDADE', nullable: true })
+  @Column({ type: 'varchar', name: 'NOMECLIENTE', nullable: true })
   nomeEntidade: string;
 
   @Column({ type: 'tinyint', name: 'PESSOA', nullable: true })

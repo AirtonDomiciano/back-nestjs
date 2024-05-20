@@ -5,7 +5,7 @@ import { CryptoService } from 'src/guards/crypto/crypto.service';
 import Payload from 'src/shared/interfaces/payload';
 import { Response } from 'src/shared/interfaces/response';
 import { Usuario } from '../usuario/entity/usuario.entity';
-import { Entidades } from '../entidades/entities/entidades.entity';
+import { Entidades } from '../clientes/entities/clientes.entity';
 
 @Injectable()
 export class AuthService {

@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 import { Response } from 'src/shared/interfaces/response';
 import Payload from 'src/shared/interfaces/payload';
 import { Usuario } from '../usuario/entity/usuario.entity';
-import { Entidades } from '../entidades/entities/entidades.entity';
+import { Entidades } from '../clientes/entities/clientes.entity';
 
 @Controller('auth')
 export class AuthController {
