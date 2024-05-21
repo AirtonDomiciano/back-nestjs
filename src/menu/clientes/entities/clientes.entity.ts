@@ -3,13 +3,10 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity('CLIENTES')
 export class Clientes {
   @PrimaryGeneratedColumn({ type: 'int', name: 'ID_CLIENTES' })
-  idEntidades: number;
+  idClientes: number;
 
-  @Column({ type: 'varchar', name: 'NOMECLIENTE', nullable: true })
-  nomeEntidade: string;
-
-  @Column({ type: 'tinyint', name: 'PESSOA', nullable: true })
-  pessoa: number;
+  @Column({ type: 'varchar', name: 'NOMECLIENTES', nullable: true })
+  nomeClientes: string;
 
   @Column({ type: 'varchar', name: 'ENDERECO', nullable: true })
   endereco: string;

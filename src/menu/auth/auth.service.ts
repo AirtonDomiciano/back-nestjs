@@ -5,7 +5,7 @@ import { CryptoService } from 'src/guards/crypto/crypto.service';
 import Payload from 'src/shared/interfaces/payload';
 import { Response } from 'src/shared/interfaces/response';
 import { Usuario } from '../usuario/entity/usuario.entity';
-import { Entidades } from '../clientes/entities/clientes.entity';
+import { Clientes } from '../clientes/entities/clientes.entity';
 
 @Injectable()
 export class AuthService {
@@ -13,8 +13,8 @@ export class AuthService {
     @InjectRepository(Usuario)
     private usuarioRepository: Repository<Usuario>,
     private cryptoService: CryptoService,
-    @InjectRepository(Entidades)
-    private entidadesRepository: Repository<Entidades>,
+    @InjectRepository(Clientes)
+    private clientesRepository: Repository<Clientes>,
   ) {}
 
   async login(input: {
@@ -71,8 +71,8 @@ export class AuthService {
     return await this.usuarioRepository.save(usuario);
   }
 
-  async findAllEntidades(): Promise<Entidades[]> {
-    return await this.entidadesRepository.find();
+  async findAllClientes(): Promise<Clientes[]> {
+    return await this.clientesRepository.find();
   }
 
   // async loginWithDevice(input: { deviceId: string; password: string }): Promise<

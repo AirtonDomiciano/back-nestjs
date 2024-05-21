@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 import { Response } from 'src/shared/interfaces/response';
 import Payload from 'src/shared/interfaces/payload';
 import { Usuario } from '../usuario/entity/usuario.entity';
-import { Entidades } from '../clientes/entities/clientes.entity';
+import { Clientes } from '../clientes/entities/clientes.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -22,9 +22,9 @@ export class AuthController {
     return this.service.createUser(usuario);
   }
 
-  @Get('entidades')
-  findAll(): Promise<Entidades[]> {
-    return this.service.findAllEntidades();
+  @Get('clientes')
+  findAll(): Promise<Clientes[]> {
+    return this.service.findAllClientes();
   }
 
   // @Post('loginWithDevice')

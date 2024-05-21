@@ -20,7 +20,7 @@ export class ClientesService {
 
   async findOne(id: number): Promise<Clientes> {
     return await this.clientesRepository.findOne({
-      where: { idEntidades: id },
+      where: { idClientes: id },
     });
   }
 
