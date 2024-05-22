@@ -9,13 +9,14 @@ import {
 } from '@nestjs/common';
 import { ApisService } from './apis.service';
 import { Apis } from './entities/apis.entity';
+import { ParamsSave } from './dto/apis-params.dto';
 
 @Controller('apis')
 export class ApisController {
   constructor(private readonly apisService: ApisService) {}
 
   @Post()
-  create(@Body() apis: Apis): Promise<Apis | string> {
+  create(@Body() apis: Apis): Promise<ParamsSave> {
     return this.apisService.create(apis);
   }
 
@@ -30,8 +31,8 @@ export class ApisController {
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() apis: Apis): Promise<Apis | string> {
-    return this.apisService.update(id, apis);
+  update(@Param('id') id: number, @Body() api: Apis): Promise<Apis | string> {
+    return this.apisService.update(id, api);
   }
 
   @Delete(':id')
