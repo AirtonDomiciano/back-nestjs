@@ -18,7 +18,9 @@ export class AuthController {
   }
 
   @Post('createUser')
-  create(@Body() usuario: Usuario): Promise<Usuario> {
+  create(
+    @Body() usuario: Usuario,
+  ): Promise<{ user: Usuario; success: boolean }> {
     return this.service.createUser(usuario);
   }
 

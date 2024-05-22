@@ -67,8 +67,12 @@ export class AuthService {
     return obj;
   }
 
-  async createUser(usuario: Usuario): Promise<Usuario> {
-    return await this.usuarioRepository.save(usuario);
+  async createUser(
+    usuario: Usuario,
+  ): Promise<{ user: Usuario; success: boolean }> {
+    const res = await this.usuarioRepository.save(usuario);
+
+    return { user: res, success: true };
   }
 
   async findAllClientes(): Promise<Clientes[]> {
