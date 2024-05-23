@@ -18,13 +18,15 @@ export class ProdutosService {
     return await this.productRepository.find();
   }
 
-  async findOne(id: number): Promise<Produtos> {
-    return await this.productRepository.findOne({ where: { id: id } });
+  async findOne(id: number): Promise<{ produto: Produtos; success: boolean }> {
+    const res = await this.productRepository.findOne({
+      where: { idProdutos: id },
+    });
+    return { produto: res, success: true };
   }
 
-  async update(id: number, produto: Produtos): Promise<Produtos> {
-    const updatedUser = await this.productRepository.save(produto);
-    return updatedUser;
+  async update(id: number, produto: Produtos): Promise<void> {
+    await this.productRepository.update(id, produto);
   }
 
   async remove(id: number): Promise<boolean> {

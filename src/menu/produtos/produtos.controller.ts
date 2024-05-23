@@ -25,15 +25,14 @@ export class ProdutosController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<Produtos> {
+  findOne(
+    @Param('id') id: number,
+  ): Promise<{ produto: Produtos; success: boolean }> {
     return this.produtosService.findOne(id);
   }
 
   @Put(':id')
-  update(
-    @Param('id') id: number,
-    @Body() produto: Produtos,
-  ): Promise<Produtos> {
+  update(@Param('id') id: number, @Body() produto: Produtos): Promise<void> {
     return this.produtosService.update(id, produto);
   }
 

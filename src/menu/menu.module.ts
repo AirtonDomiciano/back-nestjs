@@ -5,6 +5,7 @@ import { ApisModule } from './apis/apis.module';
 import { LinksModule } from './conexoes-api/conexoes-api.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { AnimaisModule } from './animais/animais.module';
+import { ProdutosModule } from './produtos/produtos.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AnimaisModule } from './animais/animais.module';
     LinksModule,
     ClientesModule,
     AnimaisModule,
+    ProdutosModule,
   ],
   controllers: [],
   providers: [],
