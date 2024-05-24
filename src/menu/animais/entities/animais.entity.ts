@@ -8,18 +8,18 @@ export class Animais {
   @Column({ type: 'int', name: 'ID_CLIENTES' })
   idClientes: number;
 
-  @Column({ type: 'varchar', name: 'NOMEANIMAL' })
-  nomeAnimal: string;
+  @Column({ type: 'varchar', name: 'NOME' })
+  nome: string;
 
-  @Column({ type: 'varchar', name: 'DIVISAOANIMAL' })
-  divisaoAnimal: string;
+  @Column({ type: 'varchar', name: 'DIVISAO' })
+  divisao: string;
 
-  @Column({ type: 'varchar', name: 'ESPECIEANIMAL' })
-  especieAnimal: string;
+  @Column({ type: 'varchar', name: 'ESPECIE' })
+  especie: string;
 
-  @Column({ type: 'varchar', name: 'RACAANIMAL' })
-  racaAnimal: string;
+  @Column({ type: 'varchar', name: 'RACA' })
+  raca: string;
 
-  @Column({ type: 'int', name: 'IDADEANIMAL' })
-  idadeAnimal: number;
+  @Column({ type: 'int', name: 'IDADE' })
+  idade: number;
 }

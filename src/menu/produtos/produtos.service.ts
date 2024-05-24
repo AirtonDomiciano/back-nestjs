@@ -27,7 +27,8 @@ export class ProdutosService {
     return updatedUser;
   }
 
-  async remove(id: number): Promise<void> {
-    await this.productRepository.delete(id);
+  async remove(id: number): Promise<boolean> {
+    const res = await this.productRepository.delete(id);
+    return res.affected > 0;
   }
 }

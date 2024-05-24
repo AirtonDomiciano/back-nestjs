@@ -29,7 +29,8 @@ export class AnimaisService {
     return updatedEntity;
   }
 
-  async remove(id: number): Promise<void> {
-    await this.animaisRepository.delete(id);
+  async remove(id: number): Promise<boolean> {
+    const res = await this.animaisRepository.delete(id);
+    return res.affected > 0;
   }
 }
