@@ -38,7 +38,7 @@ export class ClientesController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number): Promise<void> {
+  remove(@Param('id') id: number): Promise<boolean> {
     return this.clientesService.remove(id);
   }
 }

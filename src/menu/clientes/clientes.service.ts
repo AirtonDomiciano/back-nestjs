@@ -29,7 +29,8 @@ export class ClientesService {
     return updatedEntity;
   }
 
-  async remove(id: number): Promise<void> {
-    await this.clientesRepository.delete(id);
+  async remove(id: number): Promise<boolean> {
+    const res = await this.clientesRepository.delete(id);
+    return res.affected > 0;
   }
 }
