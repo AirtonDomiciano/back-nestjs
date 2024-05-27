@@ -26,6 +26,21 @@ export class Usuario {
   @Column({ type: 'varchar', name: 'FUNCAO', nullable: true })
   funcao?: string;
 
+  @Column({ type: 'bit', name: 'REMOVIDO', nullable: true })
+  removido?: boolean;
+
   @Column({ type: 'bit', name: 'ATIVO', nullable: true })
   ativo?: boolean;
+
+  @Column({ type: 'varchar', name: 'LOCALIDADE', nullable: true })
+  localidade?: string;
+
+  @Column({ type: 'varchar', name: 'UF', nullable: true })
+  uf?: string;
+
+  @Column({ type: 'varchar', name: 'BAIRRO', nullable: true })
+  bairro?: string;
+
+  @Column({ type: 'varchar', name: 'LOGRADOURO', nullable: true })
+  logradouro?: string;
 }
