@@ -24,9 +24,12 @@ export class AnimaisService {
     });
   }
 
-  async update(id: number, animais: Animais): Promise<Animais> {
-    const updatedEntity = await this.animaisRepository.save(animais);
-    return updatedEntity;
+  async update(idAnimal: number, animais: Animais): Promise<boolean> {
+    const res = await this.animaisRepository.update(
+      { idAnimal },
+      { ...animais },
+    );
+    return res.affected > 0;
   }
 
   async remove(id: number): Promise<boolean> {

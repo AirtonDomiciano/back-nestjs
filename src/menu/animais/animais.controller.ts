@@ -14,7 +14,8 @@ import { Animais } from './entities/animais.entity';
 export class AnimaisController {
   constructor(private readonly animaisService: AnimaisService) {}
 
-  @Post() create(@Body() animais: Animais): Promise<Animais> {
+  @Post()
+  create(@Body() animais: Animais): Promise<Animais> {
     return this.animaisService.create(animais);
   }
 
@@ -29,11 +30,12 @@ export class AnimaisController {
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() animais: Animais): Promise<Animais> {
+  update(@Param('id') id: number, @Body() animais: Animais): Promise<boolean> {
     return this.animaisService.update(id, animais);
   }
 
-  @Delete(':id') remove(@Param('id') id: number): Promise<void> {
-    return this.animaisService.remove(id);
+  @Delete(':id')
+  async remove(@Param('id') id: number): Promise<boolean> {
+    return await this.animaisService.remove(id);
   }
 }
