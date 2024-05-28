@@ -10,8 +10,14 @@ export class ClientesService {
     private clientesRepository: Repository<Clientes>,
   ) {}
 
-  async create(clientes: Clientes): Promise<Clientes> {
-    return await this.clientesRepository.save(clientes);
+  async create(clientes: Clientes): Promise<boolean> {
+    const res = await this.clientesRepository.save(clientes);
+
+    if (res.idClientes) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   async findAll(): Promise<Clientes[]> {
@@ -24,13 +30,15 @@ export class ClientesService {
     });
   }
 
-  async update(id: number, cliente: Clientes): Promise<Clientes> {
-    const updatedEntity = await this.clientesRepository.save(cliente);
-    return updatedEntity;
+  async update(id: number, cliente: Clientes): Promise<boolean> {
+    const res = await this.clientesRepository.update(id, cliente);
+
+    return res.affected > 0;
   }
 
   async remove(id: number): Promise<boolean> {
     const res = await this.clientesRepository.delete(id);
+
     return res.affected > 0;
   }
 }
