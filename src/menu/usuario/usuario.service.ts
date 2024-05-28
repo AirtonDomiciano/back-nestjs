@@ -10,25 +10,12 @@ export class UsuarioService {
     private usuarioRepository: Repository<Usuario>,
   ) {}
 
-  async create(usuario: Usuario): Promise<Usuario | string> {
-    let verificacao = true;
-    let mensagem = '';
-
-    if (usuario.nome.length === 0 || usuario.nome === null) {
-      verificacao = false;
-      mensagem += 'O campo Nome é obrigatório!';
+  async create(usuario: Usuario): Promise<boolean> {
+    const res = await this.usuarioRepository.save(usuario);
+    if (res.idUsuarios) {
+      return true;
     }
-
-    if (usuario.email.length === 0 || usuario.email === null) {
-      verificacao = false;
-      mensagem += 'O campo E-mail é obrigatório!';
-    }
-
-    if (verificacao) {
-      return await this.usuarioRepository.save(usuario);
-    } else {
-      return mensagem;
-    }
+    return false;
   }
 
   async findAll(): Promise<Usuario[]> {
@@ -39,31 +26,13 @@ export class UsuarioService {
     return await this.usuarioRepository.findOne({ where: { idUsuarios: id } });
   }
 
-  async update(id: number, usuario: Usuario): Promise<Usuario | string> {
-    let verificacao = true;
-    let mensagem = '';
-
-    if (usuario.nome.length === 0 || usuario.nome === null) {
-      verificacao = false;
-      mensagem += 'O campo Nome é obrigatório!';
-    }
-
-    if (usuario.email.length === 0 || usuario.email === null) {
-      verificacao = false;
-      mensagem += 'O campo E-mail é obrigatório!';
-    }
-
-    if (verificacao) {
-      const updatedUsuario = await this.usuarioRepository.save(usuario);
-      return updatedUsuario;
-    } else {
-      return mensagem;
-    }
+  async update(id: number, usuario: Usuario): Promise<boolean> {
+    const res = await this.usuarioRepository.update(id, usuario);
+    return res.affected > 0;
   }
 
-  async remove(id: number): Promise<string> {
-    await this.usuarioRepository.delete(id);
-    const mensagem = 'Usuário deletado!';
-    return mensagem;
+  async remove(id: number): Promise<boolean> {
+    const res = await this.usuarioRepository.delete(id);
+    return res.affected > 0;
   }
 }
