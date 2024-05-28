@@ -15,7 +15,7 @@ export class ApisController {
   constructor(private readonly apisService: ApisService) {}
 
   @Post()
-  create(@Body() apis: Apis): Promise<Apis | string> {
+  create(@Body() apis: Apis): Promise<boolean> {
     return this.apisService.create(apis);
   }
 
@@ -30,12 +30,12 @@ export class ApisController {
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() apis: Apis): Promise<Apis | string> {
-    return this.apisService.update(id, apis);
+  update(@Param('id') id: number, @Body() api: Apis): Promise<boolean> {
+    return this.apisService.update(id, api);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number): Promise<string> {
+  remove(@Param('id') id: number): Promise<boolean> {
     return this.apisService.remove(id);
   }
 }
