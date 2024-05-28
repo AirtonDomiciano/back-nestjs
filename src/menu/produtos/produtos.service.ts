@@ -10,27 +10,36 @@ export class ProdutosService {
     private productRepository: Repository<Produtos>,
   ) {}
 
-  async create(produto: Produtos): Promise<Produtos> {
-    return await this.productRepository.save(produto);
+  async create(produto: Produtos): Promise<boolean> {
+    const res = await this.productRepository.save(produto);
+
+    if (res.idProdutos) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   async findAll(): Promise<Produtos[]> {
     return await this.productRepository.find();
   }
 
-  async findOne(id: number): Promise<{ produto: Produtos; success: boolean }> {
+  async findOne(id: number): Promise<Produtos> {
     const res = await this.productRepository.findOne({
       where: { idProdutos: id },
     });
-    return { produto: res, success: true };
+    return res;
   }
 
-  async update(id: number, produto: Produtos): Promise<void> {
-    await this.productRepository.update(id, produto);
+  async update(id: number, produto: Produtos): Promise<boolean> {
+    const res = await this.productRepository.update(id, produto);
+
+    return res.affected > 0;
   }
 
   async remove(id: number): Promise<boolean> {
     const res = await this.productRepository.delete(id);
+
     return res.affected > 0;
   }
 }

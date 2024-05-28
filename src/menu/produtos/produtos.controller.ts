@@ -15,7 +15,7 @@ export class ProdutosController {
   constructor(private readonly produtosService: ProdutosService) {}
 
   @Post()
-  create(@Body() produto: Produtos): Promise<Produtos> {
+  create(@Body() produto: Produtos): Promise<boolean> {
     return this.produtosService.create(produto);
   }
 
@@ -25,14 +25,12 @@ export class ProdutosController {
   }
 
   @Get(':id')
-  findOne(
-    @Param('id') id: number,
-  ): Promise<{ produto: Produtos; success: boolean }> {
+  findOne(@Param('id') id: number): Promise<Produtos> {
     return this.produtosService.findOne(id);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() produto: Produtos): Promise<void> {
+  update(@Param('id') id: number, @Body() produto: Produtos): Promise<boolean> {
     return this.produtosService.update(id, produto);
   }
 
