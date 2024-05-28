@@ -15,7 +15,7 @@ export class ClientesController {
   constructor(private readonly clientesService: ClientesService) {}
 
   @Post()
-  create(@Body() cliente: Clientes): Promise<Clientes> {
+  create(@Body() cliente: Clientes): Promise<boolean> {
     return this.clientesService.create(cliente);
   }
 
@@ -30,10 +30,7 @@ export class ClientesController {
   }
 
   @Put(':id')
-  update(
-    @Param('id') id: number,
-    @Body() cliente: Clientes,
-  ): Promise<Clientes> {
+  update(@Param('id') id: number, @Body() cliente: Clientes): Promise<boolean> {
     return this.clientesService.update(id, cliente);
   }
 
