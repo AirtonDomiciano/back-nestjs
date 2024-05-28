@@ -10,8 +10,14 @@ export class ProdutosService {
     private productRepository: Repository<Produtos>,
   ) {}
 
-  async create(produto: Produtos): Promise<Produtos> {
-    return await this.productRepository.save(produto);
+  async create(produto: Produtos): Promise<boolean> {
+    const res = await this.productRepository.save(produto);
+
+    if (res.idProdutos) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   async findAll(): Promise<Produtos[]> {
@@ -19,16 +25,21 @@ export class ProdutosService {
   }
 
   async findOne(id: number): Promise<Produtos> {
-    return await this.productRepository.findOne({ where: { id: id } });
+    const res = await this.productRepository.findOne({
+      where: { idProdutos: id },
+    });
+    return res;
   }
 
-  async update(id: number, produto: Produtos): Promise<Produtos> {
-    const updatedUser = await this.productRepository.save(produto);
-    return updatedUser;
+  async update(id: number, produto: Produtos): Promise<boolean> {
+    const res = await this.productRepository.update(id, produto);
+
+    return res.affected > 0;
   }
 
   async remove(id: number): Promise<boolean> {
     const res = await this.productRepository.delete(id);
+
     return res.affected > 0;
   }
 }

@@ -15,7 +15,7 @@ export class ProdutosController {
   constructor(private readonly produtosService: ProdutosService) {}
 
   @Post()
-  create(@Body() produto: Produtos): Promise<Produtos> {
+  create(@Body() produto: Produtos): Promise<boolean> {
     return this.produtosService.create(produto);
   }
 
@@ -30,10 +30,7 @@ export class ProdutosController {
   }
 
   @Put(':id')
-  update(
-    @Param('id') id: number,
-    @Body() produto: Produtos,
-  ): Promise<Produtos> {
+  update(@Param('id') id: number, @Body() produto: Produtos): Promise<boolean> {
     return this.produtosService.update(id, produto);
   }
 
