@@ -12,12 +12,7 @@ export class ClientesService {
 
   async create(clientes: Clientes): Promise<boolean> {
     const res = await this.clientesRepository.save(clientes);
-
-    if (res.idClientes) {
-      return true;
-    } else {
-      return false;
-    }
+    return res.idClientes > 0;
   }
 
   async findAll(): Promise<Clientes[]> {

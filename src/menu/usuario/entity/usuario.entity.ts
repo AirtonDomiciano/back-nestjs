@@ -26,9 +26,6 @@ export class Usuario {
   @Column({ type: 'varchar', name: 'FUNCAO', nullable: true })
   funcao?: string;
 
-  @Column({ type: 'bit', name: 'REMOVIDO', nullable: true })
-  removido?: boolean;
-
   @Column({ type: 'bit', name: 'ATIVO', nullable: true })
   ativo?: boolean;
 

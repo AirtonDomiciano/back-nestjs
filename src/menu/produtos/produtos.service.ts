@@ -12,12 +12,7 @@ export class ProdutosService {
 
   async create(produto: Produtos): Promise<boolean> {
     const res = await this.productRepository.save(produto);
-
-    if (res.idProdutos) {
-      return true;
-    } else {
-      return false;
-    }
+    return res.idProdutos > 0;
   }
 
   async findAll(): Promise<Produtos[]> {
