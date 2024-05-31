@@ -6,6 +6,7 @@ import { LinksModule } from './conexoes-api/conexoes-api.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { AnimaisModule } from './animais/animais.module';
 import { ProdutosModule } from './produtos/produtos.module';
+import { CidadesModule } from './cidades/cidades.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ProdutosModule } from './produtos/produtos.module';
     ClientesModule,
     AnimaisModule,
     ProdutosModule,
+    CidadesModule,
   ],
   controllers: [],
   providers: [],
