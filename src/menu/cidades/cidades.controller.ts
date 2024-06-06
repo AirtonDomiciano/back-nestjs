@@ -29,11 +29,6 @@ export class CidadesController {
     return this.cidadesService.findOne(id);
   }
 
-  @Get(':nome')
-  findOneByName(@Param('nome') nome: string): Promise<Cidades> {
-    return this.cidadesService.findOneByName(nome);
-  }
-
   @Put(':id')
   update(@Param('id') id: number, @Body() cidades: Cidades): Promise<boolean> {
     return this.cidadesService.update(id, cidades);

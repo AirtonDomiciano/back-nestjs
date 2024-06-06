@@ -29,12 +29,6 @@ export class CidadesService {
     });
   }
 
-  async findOneByName(nome: string): Promise<Cidades> {
-    return await this.clientesRepository.findOne({
-      where: { nomeCidade: nome },
-    });
-  }
-
   async update(id: number, cidades: Cidades): Promise<boolean> {
     const res = await this.clientesRepository.update(id, cidades);
 
