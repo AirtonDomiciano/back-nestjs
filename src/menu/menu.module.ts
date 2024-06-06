@@ -8,6 +8,8 @@ import { AnimaisModule } from './animais/animais.module';
 import { ProdutosModule } from './produtos/produtos.module';
 import { CidadesModule } from './cidades/cidades.module';
 import { UfModule } from './uf/uf.module';
+import { AtendimentoModule } from './atendimento/atendimento.module';
+import { ServicosModule } from './servicos/servicos.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { UfModule } from './uf/uf.module';
     ProdutosModule,
     CidadesModule,
     UfModule,
+    AtendimentoModule,
+    ServicosModule,
   ],
   controllers: [],
   providers: [],
