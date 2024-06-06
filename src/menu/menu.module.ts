@@ -7,6 +7,7 @@ import { ClientesModule } from './clientes/clientes.module';
 import { AnimaisModule } from './animais/animais.module';
 import { ProdutosModule } from './produtos/produtos.module';
 import { CidadesModule } from './cidades/cidades.module';
+import { UfModule } from './uf/uf.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CidadesModule } from './cidades/cidades.module';
     AnimaisModule,
     ProdutosModule,
     CidadesModule,
+    UfModule,
   ],
   controllers: [],
   providers: [],

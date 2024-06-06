@@ -12,7 +12,7 @@ export class CidadesService {
 
   async create(cidades: Cidades): Promise<boolean> {
     const res = await this.clientesRepository.save(cidades);
-    return res.idClientes > 0;
+    return res.idCidades > 0;
   }
 
   async findAll(): Promise<Cidades[]> {
@@ -25,7 +25,13 @@ export class CidadesService {
 
   async findOne(id: number): Promise<Cidades> {
     return await this.clientesRepository.findOne({
-      where: { idClientes: id },
+      where: { idCidades: id },
+    });
+  }
+
+  async findOneByName(nome: string): Promise<Cidades> {
+    return await this.clientesRepository.findOne({
+      where: { nomeCidade: nome },
     });
   }
 
