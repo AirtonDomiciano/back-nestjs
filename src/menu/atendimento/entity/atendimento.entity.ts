@@ -5,12 +5,12 @@ export class Atendimento {
   @PrimaryGeneratedColumn({ type: 'int', name: 'ID_ATENDIMENTO' })
   idAtendimento: number;
 
-  @Column({ type: 'int', name: 'ID_CLIENTES', nullable: false })
-  idClientes: number;
+  @Column({ type: 'date', name: 'DATA' })
+  data: Date;
 
-  @Column({ type: 'int', name: 'ID_ANIMAIS', nullable: false })
-  idAnimais: number;
+  @Column({ type: 'time', name: 'HORA' })
+  hora: Date;
 
-  @Column({ type: 'int', name: 'ID_SERVICOS' })
-  idServicos: number;
+  @Column({ type: 'varchar', name: 'DESCRICAO' })
+  descricao: string;
 }
