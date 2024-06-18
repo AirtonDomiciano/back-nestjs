@@ -19,7 +19,4 @@ export class Animais {
 
   @Column({ type: 'varchar', name: 'RACA' })
   raca: string;
-
-  @Column({ type: 'int', name: 'IDADE' })
-  idade: number;
 }

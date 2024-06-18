@@ -10,8 +10,9 @@ export class AnimaisService {
     private animaisRepository: Repository<Animais>,
   ) {}
 
-  async create(animais: Animais): Promise<Animais> {
-    return await this.animaisRepository.save(animais);
+  async create(animais: Animais): Promise<boolean> {
+    const res = await this.animaisRepository.save(animais);
+    return res.idAnimal > 0;
   }
 
   async findAll(): Promise<Animais[]> {

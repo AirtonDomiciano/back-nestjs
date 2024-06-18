@@ -15,7 +15,7 @@ export class AnimaisController {
   constructor(private readonly animaisService: AnimaisService) {}
 
   @Post()
-  create(@Body() animais: Animais): Promise<Animais> {
+  create(@Body() animais: Animais): Promise<boolean> {
     return this.animaisService.create(animais);
   }
 
