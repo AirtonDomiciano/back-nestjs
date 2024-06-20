@@ -12,8 +12,8 @@ import { AtendimentoModule } from './atendimento/atendimento.module';
 import { ServicosModule } from './servicos/servicos.module';
 import { KitProdutosModule } from './kit-produtos/kit-produtos.module';
 import { HorarioServicoModule } from './horario-servico/horario-servico.module';
-import { ProdutosAtendimentoModule } from './produtos-atendimento/produtos-atendimento.module';
 import { ServicosAnimalModule } from './servicos-animal/servicos-animal.module';
+import { ProdutosServicoModule } from './produtos-servico/produtos-servico.module';
 
 @Module({
   imports: [
@@ -30,7 +30,7 @@ import { ServicosAnimalModule } from './servicos-animal/servicos-animal.module';
     ServicosModule,
     KitProdutosModule,
     HorarioServicoModule,
-    ProdutosAtendimentoModule,
+    ProdutosServicoModule,
     ServicosAnimalModule,
   ],
   controllers: [],

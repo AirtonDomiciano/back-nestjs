@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('SERVICOSANIMAL')
 export class ServicosAnimal {
-  @PrimaryGeneratedColumn({ type: 'int', name: 'ID_SERVICOANIMAL' })
+  @PrimaryGeneratedColumn({ type: 'int', name: 'ID_SERVICOSANIMAL' })
   idServicosAnimal: number;
 
   @Column({ type: 'varchar', name: 'NOMESERVICO' })
