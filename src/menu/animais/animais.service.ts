@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { QueryBuilder, Repository, createQueryBuilder } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Animais } from './entities/animais.entity';
 import { AnimaisDto } from './dto/animais.dto';
 
@@ -39,7 +39,7 @@ export class AnimaisService {
     return res.affected > 0;
   }
 
-  async trazerIdClientesParaTabelaAnimais(): Promise<Array<AnimaisDto>> {
+  async AnimaisClientes(): Promise<Array<AnimaisDto>> {
     const qb = this.animaisRepository
       .createQueryBuilder('A')
       .leftJoin('CLIENTES', 'C', 'C.ID_CLIENTES = A.ID_CLIENTES')
