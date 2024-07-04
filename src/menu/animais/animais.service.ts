@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Animais } from './entities/animais.entity';
+import { AnimaisDto } from './dto/animais.dto';
 
 @Injectable()
 export class AnimaisService {
@@ -36,5 +37,20 @@ export class AnimaisService {
   async remove(id: number): Promise<boolean> {
     const res = await this.animaisRepository.delete(id);
     return res.affected > 0;
+  }
+
+  async AnimaisClientes(): Promise<Array<AnimaisDto>> {
+    const qb = this.animaisRepository
+      .createQueryBuilder('A')
+      .leftJoin('CLIENTES', 'C', 'C.ID_CLIENTES = A.ID_CLIENTES')
+      .select([
+        'A.ID_ANIMAL AS idAnimal',
+        'A.NOME AS nome',
+        'C.NOMECLIENTES AS nomeClientes',
+        'A.DIVISAO AS divisao',
+        'A.ESPECIE AS especie',
+        'A.RACA AS raca',
+      ]);
+    return qb.getRawMany();
   }
 }

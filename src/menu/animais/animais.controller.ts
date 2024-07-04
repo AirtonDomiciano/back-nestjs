@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { AnimaisService } from './animais.service';
 import { Animais } from './entities/animais.entity';
+import { AnimaisDto } from './dto/animais.dto';
 
 @Controller('animais')
 export class AnimaisController {
@@ -22,6 +23,11 @@ export class AnimaisController {
   @Get()
   findAll(): Promise<Animais[]> {
     return this.animaisService.findAll();
+  }
+
+  @Get('animaisclientes')
+  findCliente(): Promise<Array<AnimaisDto>> {
+    return this.animaisService.AnimaisClientes();
   }
 
   @Get(':id')
