@@ -7,16 +7,16 @@ import { Cidades } from './entity/cidades.entity';
 export class CidadesService {
   constructor(
     @InjectRepository(Cidades)
-    private clientesRepository: Repository<Cidades>,
+    private cidadesRepository: Repository<Cidades>,
   ) {}
 
   async create(cidades: Cidades): Promise<boolean> {
-    const res = await this.clientesRepository.save(cidades);
+    const res = await this.cidadesRepository.save(cidades);
     return res.idCidades > 0;
   }
 
   async findAll(): Promise<Cidades[]> {
-    return await this.clientesRepository.find({
+    return await this.cidadesRepository.find({
       order: {
         nomeCidade: 'ASC',
       },
@@ -24,19 +24,19 @@ export class CidadesService {
   }
 
   async findOne(id: number): Promise<Cidades> {
-    return await this.clientesRepository.findOne({
+    return await this.cidadesRepository.findOne({
       where: { idCidades: id },
     });
   }
 
   async update(id: number, cidades: Cidades): Promise<boolean> {
-    const res = await this.clientesRepository.update(id, cidades);
+    const res = await this.cidadesRepository.update(id, cidades);
 
     return res.affected > 0;
   }
 
   async remove(id: number): Promise<boolean> {
-    const res = await this.clientesRepository.delete(id);
+    const res = await this.cidadesRepository.delete(id);
 
     return res.affected > 0;
   }

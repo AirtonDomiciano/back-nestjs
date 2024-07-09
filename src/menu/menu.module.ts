@@ -8,6 +8,13 @@ import { AnimaisModule } from './animais/animais.module';
 import { ProdutosModule } from './produtos/produtos.module';
 import { CidadesModule } from './cidades/cidades.module';
 import { UfModule } from './uf/uf.module';
+import { AtendimentoModule } from './atendimento/atendimento.module';
+import { ServicosModule } from './servicos/servicos.module';
+import { KitProdutosModule } from './kit-produtos/kit-produtos.module';
+import { HorarioServicoModule } from './horario-servico/horario-servico.module';
+import { ProdutosDoServicosModule } from './produtos-do-servico/produtos-do-servico.module';
+import { TipoServicoModule } from './tipo-servico/tipo-servico.module';
+import { ProdutosServicoModule } from './produtos-servico/produtos-servico.module';
 
 @Module({
   imports: [
@@ -20,6 +27,13 @@ import { UfModule } from './uf/uf.module';
     ProdutosModule,
     CidadesModule,
     UfModule,
+    AtendimentoModule,
+    ServicosModule,
+    KitProdutosModule,
+    HorarioServicoModule,
+    ProdutosServicoModule,
+    TipoServicoModule,
+    ProdutosDoServicosModule,
   ],
   controllers: [],
   providers: [],
