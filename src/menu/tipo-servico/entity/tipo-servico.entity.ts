@@ -1,9 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('SERVICOSANIMAL')
-export class ServicosAnimal {
-  @PrimaryGeneratedColumn({ type: 'int', name: 'ID_SERVICOANIMAL' })
-  idServicosAnimal: number;
+@Entity('TIPOSERVICO')
+export class TipoServico {
+  @PrimaryGeneratedColumn({ type: 'int', name: 'ID_TIPOSERVICO' })
+  idTipoServico: number;
 
   @Column({ type: 'varchar', name: 'NOMESERVICO' })
   nomeServico: number;

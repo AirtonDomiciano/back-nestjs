@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { MoreThan, Repository } from 'typeorm';
 import { Produtos } from './entities/produtos.entity';
 
 @Injectable()
@@ -36,5 +36,12 @@ export class ProdutosService {
     const res = await this.productRepository.delete(id);
 
     return res.affected > 0;
+  }
+
+  async buscarTodosComEstoque(): Promise<Array<Produtos>> {
+    const res = await this.productRepository.find({
+      where: { qtdeTotal: MoreThan(0) },
+    });
+    return res;
   }
 }

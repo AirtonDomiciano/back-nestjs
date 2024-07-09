@@ -8,20 +8,17 @@ export class Servicos {
   @Column({ type: 'int', name: 'ID_ATENDIMENTO' })
   idAtendimento: number;
 
-  @Column({ type: 'int', name: 'ID_PRODUTOS' })
-  idProdutos: number;
+  @Column({ type: 'int', name: 'ID_USUARIOS' })
+  idUsuarios: number;
 
   @Column({ type: 'int', name: 'ID_ANIMAL' })
   idAnimal: number;
 
-  @Column({ type: 'int', name: 'ID_SERVICOSANIMAL' })
-  idServicosAnimal: number;
+  @Column({ type: 'int', name: 'ID_TIPOSERVICO' })
+  idTipoServico: number;
 
   @Column({ type: 'float', name: 'ID_CLIENTES' })
   idClientes: number;
-
-  @Column({ type: 'float', name: 'VALORSERVICO' })
-  valorServico: number;
 
   @Column({ type: 'tinyint', name: 'STATUS' })
   status: number;

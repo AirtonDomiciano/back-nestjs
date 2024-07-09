@@ -12,8 +12,9 @@ import { AtendimentoModule } from './atendimento/atendimento.module';
 import { ServicosModule } from './servicos/servicos.module';
 import { KitProdutosModule } from './kit-produtos/kit-produtos.module';
 import { HorarioServicoModule } from './horario-servico/horario-servico.module';
-import { ProdutosAtendimentoModule } from './produtos-atendimento/produtos-atendimento.module';
-import { ServicosAnimalModule } from './servicos-animal/servicos-animal.module';
+import { ProdutosDoServicosModule } from './produtos-do-servico/produtos-do-servico.module';
+import { TipoServicoModule } from './tipo-servico/tipo-servico.module';
+import { ProdutosServicoModule } from './produtos-atendimento/produtos-servico.module';
 
 @Module({
   imports: [
@@ -30,8 +31,9 @@ import { ServicosAnimalModule } from './servicos-animal/servicos-animal.module';
     ServicosModule,
     KitProdutosModule,
     HorarioServicoModule,
-    ProdutosAtendimentoModule,
-    ServicosAnimalModule,
+    ProdutosServicoModule,
+    TipoServicoModule,
+    ProdutosDoServicosModule,
   ],
   controllers: [],
   providers: [],

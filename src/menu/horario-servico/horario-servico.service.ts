@@ -21,7 +21,7 @@ export class HorarioServicoService {
 
   async findOne(id: number): Promise<HorarioServico> {
     return await this.horarioServico.findOne({
-      where: { idHorario: id },
+      where: { idServicos: id },
     });
   }
 

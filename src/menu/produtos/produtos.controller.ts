@@ -24,6 +24,11 @@ export class ProdutosController {
     return this.produtosService.findAll();
   }
 
+  @Get('buscarTodosComEstoque')
+  buscarTodosComEstoque(): Promise<Array<Produtos>> {
+    return this.produtosService.buscarTodosComEstoque();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number): Promise<Produtos> {
     return this.produtosService.findOne(id);
