@@ -14,7 +14,7 @@ import { KitProdutosModule } from './kit-produtos/kit-produtos.module';
 import { HorarioServicoModule } from './horario-servico/horario-servico.module';
 import { ProdutosDoServicosModule } from './produtos-do-servico/produtos-do-servico.module';
 import { TipoServicoModule } from './tipo-servico/tipo-servico.module';
-import { ProdutosServicoModule } from './produtos-atendimento/produtos-servico.module';
+import { ProdutosServicoModule } from './produtos-servico/produtos-servico.module';
 
 @Module({
   imports: [
