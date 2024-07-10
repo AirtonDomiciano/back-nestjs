@@ -26,8 +26,8 @@ export class AnimaisController {
   }
 
   @Get('animaisclientes')
-  findCliente(): Promise<Array<AnimaisDto>> {
-    return this.animaisService.AnimaisClientes();
+  animaisCliente(): Promise<Array<AnimaisDto>> {
+    return this.animaisService.animaisClientes();
   }
 
   @Get(':id')

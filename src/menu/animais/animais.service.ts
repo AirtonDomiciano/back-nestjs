@@ -39,7 +39,7 @@ export class AnimaisService {
     return res.affected > 0;
   }
 
-  async AnimaisClientes(): Promise<Array<AnimaisDto>> {
+  async animaisClientes(): Promise<Array<AnimaisDto>> {
     const qb = this.animaisRepository
       .createQueryBuilder('A')
       .leftJoin('CLIENTES', 'C', 'C.ID_CLIENTES = A.ID_CLIENTES')
