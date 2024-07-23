@@ -15,6 +15,8 @@ import { HorarioServicoModule } from './horario-servico/horario-servico.module';
 import { ProdutosDoServicosModule } from './produtos-do-servico/produtos-do-servico.module';
 import { TipoServicoModule } from './tipo-servico/tipo-servico.module';
 import { ProdutosServicoModule } from './produtos-servico/produtos-servico.module';
+import { ContasReceberModule } from './contas-receber/contas-receber.module';
+import { ParcelasModule } from './parcelas/parcelas.module';
 
 @Module({
   imports: [
@@ -34,6 +36,8 @@ import { ProdutosServicoModule } from './produtos-servico/produtos-servico.modul
     ProdutosServicoModule,
     TipoServicoModule,
     ProdutosDoServicosModule,
+    ContasReceberModule,
+    ParcelasModule,
   ],
   controllers: [],
   providers: [],

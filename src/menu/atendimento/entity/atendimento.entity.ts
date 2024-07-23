@@ -16,7 +16,4 @@ export class Atendimento {
 
   @Column({ type: 'float', name: 'VALOR' })
   valor: number;
-
-  @Column({ type: 'int', name: 'ID_FORMASDEPAGAMENTO' })
-  idFormasDePagamento: number;
 }
