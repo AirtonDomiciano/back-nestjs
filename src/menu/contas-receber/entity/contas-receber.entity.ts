@@ -22,7 +22,4 @@ export class ContasReceber {
 
   @Column({ type: 'datetime', name: 'DATAPGTO' })
   dataPgto: Date;
-
-  @Column({ type: 'float', name: 'JUROS' })
-  juros: number;
 }
