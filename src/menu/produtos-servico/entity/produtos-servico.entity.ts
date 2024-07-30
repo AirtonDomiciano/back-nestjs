@@ -6,7 +6,7 @@ export class ProdutosServico {
   idProdutosServico: number;
 
   @Column({ type: 'int', name: 'ID_TIPOSERVICO' })
-  idServicosAnimal: number;
+  idTipoServico: number;
 
   @Column({ type: 'varchar', name: 'ID_PRODUTOS' })
   idProdutos: string;

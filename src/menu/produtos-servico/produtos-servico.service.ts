@@ -26,11 +26,11 @@ export class ProdutosServicoService {
     return res;
   }
 
-  async buscarProdutosPorServicoAnimal(
-    idServicosAnimal: number,
+  async buscarProdutosPorTipoServico(
+    idTipoServico: number,
   ): Promise<Array<ProdutosServico>> {
     const res = await this.produtosServicoService.find({
-      where: { idServicosAnimal: idServicosAnimal },
+      where: { idTipoServico: idTipoServico },
     });
     return res;
   }
