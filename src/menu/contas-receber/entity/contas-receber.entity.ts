@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity('CONTASRECEBER')
 export class ContasReceber {
   @PrimaryGeneratedColumn({ type: 'int', name: 'ID_CONTASRECEBER' })
-  idContasReceber: number;
+  idContasReceber?: number;
 
   @Column({ type: 'int', name: 'ID_CLIENTES' })
   idClientes: number;
@@ -21,5 +21,5 @@ export class ContasReceber {
   valorPago: number;
 
   @Column({ type: 'datetime', name: 'DATAPGTO' })
-  dataPgto: Date;
+  dataPgto?: Date;
 }

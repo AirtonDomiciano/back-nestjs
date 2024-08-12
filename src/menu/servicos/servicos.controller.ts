@@ -27,7 +27,7 @@ export class ServicosController {
 
   @Get('buscarPorIdAtendimento/:id')
   buscarPorIdAtendimento(@Param('id') id: number): Promise<Servicos> {
-    return this.servicosService.buscaPorIdAtendimento(id);
+    return this.servicosService.buscarPorIdAtendimento(id);
   }
 
   @Get('listando')

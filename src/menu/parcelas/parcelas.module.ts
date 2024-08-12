@@ -6,6 +6,7 @@ import { ParcelasService } from './parcelas.service';
 @Module({
   imports: [TypeOrmModule.forFeature([Parcelas])],
   controllers: [ParcelasController],
+  exports: [ParcelasService],
   providers: [ParcelasService],
 })
 export class ParcelasModule {}

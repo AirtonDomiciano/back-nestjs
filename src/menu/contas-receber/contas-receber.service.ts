@@ -2,13 +2,18 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ContasReceber } from './entity/contas-receber.entity';
-import { ContasReceberDto } from './dto/contas-receber.dto';
+import { Parcelas } from '../parcelas/entity/parcelas.entity';
+import { ServicosService } from '../servicos/servicos.service';
+import { ParcelasService } from '../parcelas/parcelas.service';
+import { SalvarPagamentoDto } from './dto/salvar-pagamento.dto';
 
 @Injectable()
 export class ContasReceberService {
   constructor(
     @InjectRepository(ContasReceber)
     private contasReceberRepository: Repository<ContasReceber>,
+    private servicosService: ServicosService,
+    private parcelasService: ParcelasService,
   ) {}
 
   async create(contasReceber: ContasReceber): Promise<boolean> {
@@ -52,5 +57,41 @@ export class ContasReceberService {
     });
 
     return res;
+  }
+
+  async salvarPagamento(
+    idAtendimento: number,
+    obj: SalvarPagamentoDto,
+  ): Promise<boolean> {
+    const servico =
+      await this.servicosService.buscarPorIdAtendimento(idAtendimento);
+    const contaReceber = await this.contasReceberRepository.findOne({
+      where: { idAtendimento: idAtendimento },
+    });
+    const parcela: Parcelas = {
+      idContasReceber: contaReceber.idContasReceber!,
+      idFormasDePagamento: obj.idFormasDePagamento,
+      valorParcela: obj.valor,
+      dataPgto: new Date(),
+    };
+    const valorPago = contaReceber.valorPago! + obj.valor;
+    const valorArredondado = parseFloat(valorPago.toFixed(2));
+    contaReceber.valorPago! = valorArredondado;
+
+    if (contaReceber.valor === valorArredondado) {
+      contaReceber.pago = true;
+      contaReceber.dataPgto = new Date();
+      servico.status = 4;
+    }
+    const idServico = servico.idServicos;
+    delete servico.idServicos;
+
+    const res = await Promise.all([
+      this.servicosService.update(idServico, servico),
+      this.create(contaReceber),
+      this.parcelasService.create(parcela),
+    ]);
+
+    if (res) return true;
   }
 }

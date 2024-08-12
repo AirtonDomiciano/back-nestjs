@@ -9,6 +9,8 @@ import {
 } from '@nestjs/common';
 import { ContasReceberService } from './contas-receber.service';
 import { ContasReceber } from './entity/contas-receber.entity';
+import { FormasPagamento } from '../formas-de-pagamento/entity/formas-de-pagamento.entity';
+import { SalvarPagamentoDto } from './dto/salvar-pagamento.dto';
 
 @Controller('contas-receber')
 export class ContasReceberController {
@@ -17,6 +19,14 @@ export class ContasReceberController {
   @Post()
   create(@Body() contasReceber: ContasReceber): Promise<boolean> {
     return this.contasReceberService.create(contasReceber);
+  }
+
+  @Post('salvarPagamento/:id')
+  salvarPagamento(
+    @Param('id') id: number,
+    @Body() obj: SalvarPagamentoDto,
+  ): Promise<boolean> {
+    return this.contasReceberService.salvarPagamento(id, obj);
   }
 
   @Get()

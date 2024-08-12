@@ -20,7 +20,7 @@ export class ServicosService {
     return await this.servicosRepository.find();
   }
 
-  async buscaPorIdAtendimento(id: number): Promise<Servicos> {
+  async buscarPorIdAtendimento(id: number): Promise<Servicos> {
     return await this.servicosRepository.findOne({
       where: { idAtendimento: id },
     });
@@ -61,11 +61,7 @@ export class ServicosService {
     qb.innerJoin('ANIMAIS', 'A', 'A.ID_ANIMAL = S.ID_ANIMAL');
     qb.innerJoin('TIPOSERVICO', 'TS', 'TS.ID_TIPOSERVICO = S.ID_TIPOSERVICO');
     qb.innerJoin('ATENDIMENTO', 'AT', 'AT.ID_ATENDIMENTO = S.ID_ATENDIMENTO');
-    qb.innerJoin(
-      'CONTASRECEBER',
-      'CB',
-      'AT.ID_ATENDIMENTO = CB.ID_ATENDIMENTO',
-    );
+    qb.leftJoin('CONTASRECEBER', 'CB', 'AT.ID_ATENDIMENTO = CB.ID_ATENDIMENTO');
 
     return qb.getRawMany();
   }

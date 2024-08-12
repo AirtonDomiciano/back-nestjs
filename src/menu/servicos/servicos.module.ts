@@ -7,6 +7,7 @@ import { ServicosService } from './servicos.service';
 @Module({
   imports: [TypeOrmModule.forFeature([Servicos])],
   controllers: [ServicosController],
+  exports: [ServicosService],
   providers: [ServicosService],
 })
 export class ServicosModule {}
