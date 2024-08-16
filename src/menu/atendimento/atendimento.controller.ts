@@ -19,6 +19,26 @@ export class AtendimentoController {
     return this.atendimentoService.create(atendimento);
   }
 
+  @Post('iniciar/:id')
+  iniciar(@Param('id') id: number): Promise<boolean> {
+    return this.atendimentoService.iniciar(id);
+  }
+
+  @Post('finalizar/:id')
+  finalizar(@Param('id') id: number): Promise<boolean> {
+    return this.atendimentoService.finalizar(id);
+  }
+
+  @Post('cancelar/:id')
+  cancelar(@Param('id') id: number): Promise<boolean> {
+    return this.atendimentoService.cancelar(id);
+  }
+
+  @Post('restaurar/:id')
+  restaurar(@Param('id') id: number): Promise<boolean> {
+    return this.atendimentoService.restaurar(id);
+  }
+
   @Get()
   findAll(): Promise<Atendimento[]> {
     return this.atendimentoService.findAll();

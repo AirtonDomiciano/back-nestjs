@@ -25,6 +25,12 @@ export class HorarioServicoService {
     });
   }
 
+  async buscarPorIdServico(id: number): Promise<HorarioServico> {
+    return await this.horarioServico.findOne({
+      where: { idServicos: id },
+    });
+  }
+
   async update(id: number, horarioServico: HorarioServico): Promise<boolean> {
     const res = await this.horarioServico.update(id, horarioServico);
 

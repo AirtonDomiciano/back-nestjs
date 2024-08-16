@@ -25,13 +25,13 @@ export class ProdutosServicoController {
     return this.produtosServicoService.findAll();
   }
 
-  @Get('buscarProdutosPorIdServicosAnimal/:id')
+  @Get('buscarProdutosPorIdTipoServico/:id')
   buscarProdutosPorServicoAnimal(
     @Param('id')
-    idServicosAnimal: number,
+    idTipoServico: number,
   ): Promise<ProdutosServico[]> {
-    return this.produtosServicoService.buscarProdutosPorServicoAnimal(
-      idServicosAnimal,
+    return this.produtosServicoService.buscarProdutosPorTipoServico(
+      idTipoServico,
     );
   }
 
