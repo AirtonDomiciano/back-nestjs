@@ -8,7 +8,7 @@ import { HorarioServicoService } from '../horario-servico/horario-servico.servic
 import TempoDto from './dto/tempo.dto';
 import { ContasReceberService } from '../contas-receber/contas-receber.service';
 import { ParcelasService } from '../parcelas/parcelas.service';
-import { MovLctosService } from '../movlctos/movlctos.service';
+import { MovimentacoesService } from '../movlctos/movimentacoes.service';
 
 @Injectable()
 export class AtendimentoService {
@@ -19,7 +19,7 @@ export class AtendimentoService {
     private horarioServicoService: HorarioServicoService,
     private contasReceberService: ContasReceberService,
     private parcelasService: ParcelasService,
-    private movLctosService: MovLctosService,
+    private movLctosService: MovimentacoesService,
   ) {}
 
   async create(atendimento: Atendimento): Promise<boolean> {

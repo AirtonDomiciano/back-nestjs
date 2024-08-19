@@ -17,7 +17,7 @@ import { TipoServicoModule } from './tipo-servico/tipo-servico.module';
 import { ProdutosServicoModule } from './produtos-servico/produtos-servico.module';
 import { ContasReceberModule } from './contas-receber/contas-receber.module';
 import { ParcelasModule } from './parcelas/parcelas.module';
-import { MovLctosModule } from './movlctos/movlctos.module';
+import { MovimentacoesModule } from './movlctos/movimentacoes.module';
 
 @Module({
   imports: [
@@ -39,7 +39,7 @@ import { MovLctosModule } from './movlctos/movlctos.module';
     ProdutosDoServicosModule,
     ContasReceberModule,
     ParcelasModule,
-    MovLctosModule,
+    MovimentacoesModule,
   ],
   controllers: [],
   providers: [],
