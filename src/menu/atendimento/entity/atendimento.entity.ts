@@ -11,6 +11,9 @@ export class Atendimento {
   @Column({ type: 'time', name: 'HORA' })
   hora: Date;
 
+  @Column({ type: 'varchar', name: 'TITULO' })
+  titulo: string;
+
   @Column({ type: 'varchar', name: 'DESCRICAO' })
   descricao: string;
 
