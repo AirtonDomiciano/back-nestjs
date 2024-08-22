@@ -1,33 +1,33 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { MovLctos } from './entity/movlctos.entity';
 import { ContasReceberService } from '../contas-receber/contas-receber.service';
+import { Movimentacoes } from './entity/movimentacoes.entity';
 
 @Injectable()
-export class MovLctosService {
+export class MovimentacoesService {
   constructor(
-    @InjectRepository(MovLctos)
-    private movLctosRepository: Repository<MovLctos>,
+    @InjectRepository(Movimentacoes)
+    private movLctosRepository: Repository<Movimentacoes>,
     private contasReceberService: ContasReceberService,
   ) {}
 
-  async create(movLctos: MovLctos): Promise<boolean> {
+  async create(movLctos: Movimentacoes): Promise<boolean> {
     const res = await this.movLctosRepository.save(movLctos);
     return res.idMovlctos > 0;
   }
 
-  async findAll(): Promise<MovLctos[]> {
+  async findAll(): Promise<Movimentacoes[]> {
     return await this.movLctosRepository.find();
   }
 
-  async findOne(id: number): Promise<MovLctos> {
+  async findOne(id: number): Promise<Movimentacoes> {
     return await this.movLctosRepository.findOne({
       where: { idMovlctos: id },
     });
   }
 
-  async update(id: number, movLctos: MovLctos): Promise<boolean> {
+  async update(id: number, movLctos: Movimentacoes): Promise<boolean> {
     const res = await this.movLctosRepository.update(id, movLctos);
 
     return res.affected > 0;
@@ -45,7 +45,7 @@ export class MovLctosService {
 
   async salvarPagamento(
     idAtendimento: number,
-    obj: MovLctos,
+    obj: Movimentacoes,
   ): Promise<boolean> {
     if (obj.recebimento) {
       await this.contasReceberService.salvarPagamento(idAtendimento, {

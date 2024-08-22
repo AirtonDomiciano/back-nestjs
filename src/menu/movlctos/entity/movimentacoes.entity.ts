@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('MOVLCTOS')
-export class MovLctos {
+export class Movimentacoes {
   @PrimaryGeneratedColumn({ type: 'int', name: 'ID_MOVLCTOS' })
   idMovlctos?: number;
 
