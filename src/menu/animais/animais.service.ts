@@ -53,8 +53,12 @@ export class AnimaisService {
   }
 
   async remove(id: number): Promise<boolean> {
-    const res = await this.animaisRepository.delete(id);
-    return res.affected > 0;
+    try {
+      await this.animaisRepository.delete(id);
+    } catch (e) {
+      return false;
+    }
+    return true;
   }
 
   async animaisClientes(): Promise<Array<AnimaisDto>> {
