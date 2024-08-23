@@ -39,9 +39,12 @@ export class ProdutosService {
   }
 
   async remove(id: number): Promise<boolean> {
-    const res = await this.productRepository.delete(id);
-
-    return res.affected > 0;
+    try {
+      await this.productRepository.delete(id);
+    } catch (e) {
+      return false;
+    }
+    return true;
   }
 
   async buscarTodosComEstoque(): Promise<Array<Produtos>> {

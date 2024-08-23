@@ -53,7 +53,27 @@ export class AnimaisService {
   }
 
   async remove(id: number): Promise<boolean> {
-    const res = await this.animaisRepository.delete(id);
-    return res.affected > 0;
+    try {
+      await this.animaisRepository.delete(id);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+
+  async animaisClientes(): Promise<Array<AnimaisDto>> {
+    const qb = this.animaisRepository
+      .createQueryBuilder('A')
+      .leftJoin('CLIENTES', 'C', 'C.ID_CLIENTES = A.ID_CLIENTES')
+      .select([
+        'A.ID_ANIMAL AS idAnimal',
+        'A.NOME AS nome',
+        'C.NOMECLIENTES AS nomeClientes',
+        'A.DIVISAO AS divisao',
+        'A.ESPECIE AS especie',
+        'A.RACA AS raca',
+        'A.ATIVO AS ativo',
+      ]);
+    return qb.getRawMany();
   }
 }

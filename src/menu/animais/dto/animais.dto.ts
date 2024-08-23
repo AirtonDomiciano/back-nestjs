@@ -5,4 +5,5 @@ export class AnimaisDto {
   divisao: string;
   especie: string;
   raca: string;
+  ativo: boolean;
 }

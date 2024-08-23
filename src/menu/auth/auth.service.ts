@@ -36,7 +36,7 @@ export class AuthService {
       where: { email: email },
     });
 
-    if (!user?.senha && password !== user?.senha) {
+    if (password !== user?.senha) {
       obj.success = false;
       obj.message = 'Usuário não tem acesso.';
     } else {

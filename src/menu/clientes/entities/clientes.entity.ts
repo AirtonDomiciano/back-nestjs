@@ -35,9 +35,6 @@ export class Clientes {
   @Column({ type: 'smalldatetime', name: 'DTANASCIMENTO', nullable: true })
   dtaNascimento: Date;
 
-  @Column({ type: 'bit', name: 'LISTANEGRA', nullable: false })
-  listaNegra: boolean;
-
   @Column({ type: 'bit', name: 'ATIVO', nullable: false })
   ativo: boolean;
 }

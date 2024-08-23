@@ -38,8 +38,11 @@ export class ClientesService {
   }
 
   async remove(id: number): Promise<boolean> {
-    const res = await this.clientesRepository.delete(id);
-
-    return res.affected > 0;
+    try {
+      await this.clientesRepository.delete(id);
+    } catch (e) {
+      return false;
+    }
+    return true;
   }
 }
