@@ -25,6 +25,11 @@ export class AnimaisController {
     return this.animaisService.findAll();
   }
 
+  @Get('buscarPorIdClientes/:id')
+  buscarPorIdClientes(@Param('id') id: number): Promise<Array<Animais>> {
+    return this.animaisService.buscarPorIdClientes(id);
+  }
+
   @Get('animaisclientes')
   animaisCliente(): Promise<Array<AnimaisDto>> {
     return this.animaisService.animaisClientes();

@@ -26,6 +26,12 @@ export class AnimaisService {
     });
   }
 
+  async buscarPorIdClientes(id: number): Promise<Array<Animais>> {
+    return await this.animaisRepository.find({
+      where: { idClientes: id },
+    });
+  }
+
   async update(idAnimal: number, animais: Animais): Promise<boolean> {
     const res = await this.animaisRepository.update(
       { idAnimal },
