@@ -38,11 +38,7 @@ export class UsuarioService {
   }
 
   async remove(id: number): Promise<boolean> {
-    try {
-      await this.usuarioRepository.delete(id);
-    } catch (e) {
-      return false;
-    }
-    return true;
+    const res = await this.usuarioRepository.delete(id);
+    return res.affected > 0;
   }
 }
