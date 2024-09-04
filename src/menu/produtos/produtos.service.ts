@@ -39,13 +39,18 @@ export class ProdutosService {
   }
 
   async remove(id: number): Promise<boolean> {
-    try {
-      await this.productRepository.delete(id);
-    } catch (e) {
-      return false;
-    }
-    return true;
+    const res = await this.productRepository.delete(id);
+    return res.affected > 0;
   }
+
+  // async remove(id: number): Promise<boolean> {
+  //   try {
+  //     await this.productRepository.delete(id);
+  //   } catch (e) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   async buscarTodosComEstoque(): Promise<Array<Produtos>> {
     const res = await this.productRepository.find({
