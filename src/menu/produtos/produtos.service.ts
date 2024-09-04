@@ -43,15 +43,6 @@ export class ProdutosService {
     return res.affected > 0;
   }
 
-  // async remove(id: number): Promise<boolean> {
-  //   try {
-  //     await this.productRepository.delete(id);
-  //   } catch (e) {
-  //     return false;
-  //   }
-  //   return true;
-  // }
-
   async buscarTodosComEstoque(): Promise<Array<Produtos>> {
     const res = await this.productRepository.find({
       where: { qtdeTotal: MoreThan(0) },
