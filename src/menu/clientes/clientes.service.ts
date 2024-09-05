@@ -19,6 +19,12 @@ export class ClientesService {
     return await this.clientesRepository.find();
   }
 
+  async buscarAtivosInativos(ativo: boolean): Promise<Array<Clientes>> {
+    return await this.clientesRepository.find({
+      where: { ativo: ativo },
+    });
+  }
+
   async findOne(id: number): Promise<Clientes> {
     return await this.clientesRepository.findOne({
       where: { idClientes: id },

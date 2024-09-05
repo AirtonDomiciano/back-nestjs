@@ -35,4 +35,10 @@ export class ApisService {
     const res = await this.apisRepository.delete(id);
     return res.affected > 0;
   }
+
+  async buscarAtivosInativos(ativo: boolean): Promise<Array<Apis>> {
+    return await this.apisRepository.find({
+      where: { ativo: ativo },
+    });
+  }
 }

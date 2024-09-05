@@ -22,6 +22,12 @@ export class UsuarioService {
     return await this.usuarioRepository.find();
   }
 
+  async buscarAtivosInativos(ativo: boolean): Promise<Array<Usuario>> {
+    return await this.usuarioRepository.find({
+      where: { ativo: ativo },
+    });
+  }
+
   async findOne(id: number): Promise<Usuario> {
     return await this.usuarioRepository.findOne({ where: { idUsuarios: id } });
   }

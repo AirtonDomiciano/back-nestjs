@@ -24,6 +24,11 @@ export class ApisController {
     return this.apisService.findAll();
   }
 
+  @Get('buscarAtivosInativos/:ativo')
+  buscarAtivosInativos(@Param('ativo') ativo: boolean): Promise<Apis[]> {
+    return this.apisService.buscarAtivosInativos(ativo);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number): Promise<Apis> {
     return this.apisService.findOne(id);

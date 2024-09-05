@@ -24,6 +24,11 @@ export class UsuarioController {
     return this.usuarioService.findAll();
   }
 
+  @Get('buscarAtivosInativos/:ativo')
+  buscarAtivosInativos(@Param('ativo') ativo: boolean): Promise<Usuario[]> {
+    return this.usuarioService.buscarAtivosInativos(ativo);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number): Promise<Usuario> {
     return this.usuarioService.findOne(id);

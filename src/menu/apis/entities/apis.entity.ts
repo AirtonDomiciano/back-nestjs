@@ -13,4 +13,7 @@ export class Apis {
 
   @Column({ type: 'varchar', name: 'RAPIDAPI_HOST', nullable: false })
   rapidApiHost: string;
+
+  @Column({ type: 'bit', name: 'ATIVO' })
+  ativo: boolean;
 }

@@ -25,9 +25,9 @@ export class AnimaisController {
     return this.animaisService.findAll();
   }
 
-  @Get('animaisclientes')
-  animaisCliente(): Promise<Array<AnimaisDto>> {
-    return this.animaisService.animaisClientes();
+  @Get('animaisclientes/:ativo')
+  animaisCliente(@Param('ativo') ativo: boolean): Promise<Array<AnimaisDto>> {
+    return this.animaisService.animaisClientes(ativo);
   }
 
   @Get(':id')
