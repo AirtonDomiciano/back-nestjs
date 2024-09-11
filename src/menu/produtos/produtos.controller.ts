@@ -29,6 +29,13 @@ export class ProdutosController {
     return this.produtosService.buscarTodosComEstoque();
   }
 
+  @Get('buscarAtivosInativos/:ativo')
+  buscarAtivosInativos(
+    @Param('ativo') ativo: boolean,
+  ): Promise<Array<Produtos>> {
+    return this.produtosService.buscarAtivosInativos(ativo);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number): Promise<Produtos> {
     return this.produtosService.findOne(id);

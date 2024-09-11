@@ -19,4 +19,7 @@ export class Animais {
 
   @Column({ type: 'varchar', name: 'RACA' })
   raca: string;
+
+  @Column({ type: 'bit', name: 'ATIVO' })
+  ativo: boolean;
 }

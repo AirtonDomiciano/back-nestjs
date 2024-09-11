@@ -19,6 +19,12 @@ export class ProdutosService {
     return await this.productRepository.find();
   }
 
+  async buscarAtivosInativos(ativo: boolean): Promise<Array<Produtos>> {
+    return await this.productRepository.find({
+      where: { ativo: ativo },
+    });
+  }
+
   async findOne(id: number): Promise<Produtos> {
     const res = await this.productRepository.findOne({
       where: { idProdutos: id },

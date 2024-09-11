@@ -24,6 +24,11 @@ export class ClientesController {
     return this.clientesService.findAll();
   }
 
+  @Get('buscarAtivosInativos/:ativo')
+  buscarAtivosInativos(@Param('ativo') ativo: boolean): Promise<Clientes[]> {
+    return this.clientesService.buscarAtivosInativos(ativo);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number): Promise<Clientes> {
     return this.clientesService.findOne(id);
