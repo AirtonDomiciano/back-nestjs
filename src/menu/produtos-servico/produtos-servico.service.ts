@@ -7,39 +7,41 @@ import { ProdutosServico } from './entity/produtos-servico.entity';
 export class ProdutosServicoService {
   constructor(
     @InjectRepository(ProdutosServico)
-    private produtosServicoService: Repository<ProdutosServico>,
+    private produtosServicoRepository: Repository<ProdutosServico>,
   ) {}
 
   async create(produtosServico: ProdutosServico): Promise<boolean> {
-    const res = await this.produtosServicoService.save(produtosServico);
+    const res = await this.produtosServicoRepository.save(produtosServico);
     return res.idProdutosServico > 0;
   }
 
   async findAll(): Promise<ProdutosServico[]> {
-    return await this.produtosServicoService.find();
+    return await this.produtosServicoRepository.find();
   }
 
   async findOne(idProdutosServico: number): Promise<ProdutosServico> {
-    const res = await this.produtosServicoService.findOne({
+    const res = await this.produtosServicoRepository.findOne({
       where: { idProdutosServico: idProdutosServico },
     });
     return res;
   }
 
   async buscarProdutosPorTipoServico(
-    idTipoServico: number,
+    idServicosAnimal: number,
   ): Promise<Array<ProdutosServico>> {
-    const res = await this.produtosServicoService.find({
-      where: { idTipoServico: idTipoServico },
-    });
-    return res;
+    const qb = await this.produtosServicoRepository.createQueryBuilder('PS');
+    qb.innerJoinAndSelect('PRODUTOS', 'P', 'PS.ID_PRODUTOS = P.ID_PRODUTOS');
+    qb.where('PS.ID_TIPOSERVICO = :idServicosAnimal', { idServicosAnimal });
+    qb.andWhere('P.QTDETOTAL > 0');
+
+    return qb.getMany();
   }
 
   async update(
     idProdutosServico: number,
     produtosServico: ProdutosServico,
   ): Promise<boolean> {
-    const res = await this.produtosServicoService.update(
+    const res = await this.produtosServicoRepository.update(
       idProdutosServico,
       produtosServico,
     );
@@ -48,7 +50,7 @@ export class ProdutosServicoService {
   }
 
   async remove(idProdutosServico: number): Promise<boolean> {
-    const res = await this.produtosServicoService.delete(idProdutosServico);
+    const res = await this.produtosServicoRepository.delete(idProdutosServico);
 
     return res.affected > 0;
   }
