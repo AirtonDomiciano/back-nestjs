@@ -10,7 +10,6 @@ import { CidadesModule } from './cidades/cidades.module';
 import { UfModule } from './uf/uf.module';
 import { AtendimentoModule } from './atendimento/atendimento.module';
 import { ServicosModule } from './servicos/servicos.module';
-import { KitProdutosModule } from './kit-produtos/kit-produtos.module';
 import { HorarioServicoModule } from './horario-servico/horario-servico.module';
 import { ProdutosDoServicosModule } from './produtos-do-servico/produtos-do-servico.module';
 import { TipoServicoModule } from './tipo-servico/tipo-servico.module';
@@ -32,7 +31,6 @@ import { MovimentacoesModule } from './movlctos/movimentacoes.module';
     UfModule,
     AtendimentoModule,
     ServicosModule,
-    KitProdutosModule,
     HorarioServicoModule,
     ProdutosServicoModule,
     TipoServicoModule,
