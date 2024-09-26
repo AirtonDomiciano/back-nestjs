@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { AtendimentoService } from './atendimento.service';
 import { Atendimento } from './entity/atendimento.entity';
+import { GraficoAtendimentosDto } from './dto/grafico-atendimentos.dto';
 
 @Controller('atendimento')
 export class AtendimentoController {
@@ -42,6 +43,17 @@ export class AtendimentoController {
   @Get()
   findAll(): Promise<Atendimento[]> {
     return this.atendimentoService.findAll();
+  }
+
+  @Get('buscarAtendimentosPorData/:dataInicio/:dataTermino')
+  buscarAtendimentosPorData(
+    @Param('dataInicio') dataInicio: string,
+    @Param('dataTermino') dataTermino: string,
+  ): Promise<Array<GraficoAtendimentosDto>> {
+    return this.atendimentoService.buscarAtendimentosPorData(
+      dataInicio,
+      dataTermino,
+    );
   }
 
   @Get(':id')

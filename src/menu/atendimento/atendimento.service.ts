@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Between, Repository, createQueryBuilder } from 'typeorm';
 import { Atendimento } from './entity/atendimento.entity';
 import { ServicosService } from '../servicos/servicos.service';
 import { HorarioServico } from '../horario-servico/entity/horario-servico.entity';
@@ -9,6 +9,7 @@ import TempoDto from './dto/tempo.dto';
 import { ContasReceberService } from '../contas-receber/contas-receber.service';
 import { ParcelasService } from '../parcelas/parcelas.service';
 import { MovimentacoesService } from '../movlctos/movimentacoes.service';
+import { GraficoAtendimentosDto } from './dto/grafico-atendimentos.dto';
 
 @Injectable()
 export class AtendimentoService {
@@ -160,5 +161,25 @@ export class AtendimentoService {
     const tempoFormatado: any = `${tempoServico.horas}:${tempoServico.minutos}:${tempoServico.segundos}`;
 
     return tempoFormatado;
+  }
+
+  async buscarAtendimentosPorData(
+    dataInicio: string,
+    dataTermino: string,
+  ): Promise<Array<GraficoAtendimentosDto>> {
+    const qb = this.atendimentoRepository.createQueryBuilder('A');
+    qb.select([
+      'A.DATA as data',
+      'A.VALOR as valor',
+      'TS.VALOR as valorTipoServico',
+    ]);
+    qb.innerJoin('SERVICOS', 'S', 'S.ID_ATENDIMENTO = A.ID_ATENDIMENTO');
+    qb.innerJoin('TIPOSERVICO', 'TS', 'TS.ID_TIPOSERVICO = S.ID_TIPOSERVICO');
+    qb.where('A.DATA BETWEEN :dataInicio AND :dataTermino', {
+      dataInicio,
+      dataTermino,
+    });
+
+    return qb.getRawMany();
   }
 }
