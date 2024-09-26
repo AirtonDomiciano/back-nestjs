@@ -171,10 +171,12 @@ export class AtendimentoService {
     qb.select([
       'A.DATA as data',
       'A.VALOR as valor',
+      'CR.VALORPAGO as valorPago',
       'TS.VALOR as valorTipoServico',
     ]);
     qb.innerJoin('SERVICOS', 'S', 'S.ID_ATENDIMENTO = A.ID_ATENDIMENTO');
     qb.innerJoin('TIPOSERVICO', 'TS', 'TS.ID_TIPOSERVICO = S.ID_TIPOSERVICO');
+    qb.innerJoin('CONTASRECEBER', 'CR', 'CR.ID_ATENDIMENTO = A.ID_ATENDIMENTO');
     qb.where('A.DATA BETWEEN :dataInicio AND :dataTermino', {
       dataInicio,
       dataTermino,
