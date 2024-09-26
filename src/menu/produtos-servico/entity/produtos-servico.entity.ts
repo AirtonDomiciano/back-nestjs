@@ -8,6 +8,6 @@ export class ProdutosServico {
   @Column({ type: 'int', name: 'ID_TIPOSERVICO' })
   idTipoServico: number;
 
-  @Column({ type: 'varchar', name: 'ID_PRODUTOS' })
-  idProdutos: string;
+  @Column({ type: 'int', name: 'ID_PRODUTOS' })
+  idProdutos: number;
 }

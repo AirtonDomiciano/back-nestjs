@@ -54,4 +54,10 @@ export class ProdutosServicoService {
 
     return res.affected > 0;
   }
+
+  async deletarPorIdTipoServico(id: number): Promise<boolean> {
+    const res = await this.produtosServicoService.delete({ idTipoServico: id });
+
+    return res.affected > 0;
+  }
 }

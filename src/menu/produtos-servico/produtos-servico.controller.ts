@@ -25,6 +25,11 @@ export class ProdutosServicoController {
     return this.produtosServicoService.findAll();
   }
 
+  @Delete('deletarPorIdTipoServico/:id')
+  deletarPorIdTipoServico(@Param('id') id: string): Promise<boolean> {
+    return this.produtosServicoService.deletarPorIdTipoServico(Number(id));
+  }
+
   @Get('buscarProdutosPorIdTipoServico/:id')
   buscarProdutosPorServicoAnimal(
     @Param('id')
@@ -46,10 +51,5 @@ export class ProdutosServicoController {
     @Body() produtosServico: ProdutosServico,
   ): Promise<boolean> {
     return this.produtosServicoService.update(id, produtosServico);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: number): Promise<boolean> {
-    return this.produtosServicoService.remove(id);
   }
 }
