@@ -12,6 +12,7 @@ export class ProdutosServicoService {
 
   async create(produtosServico: ProdutosServico): Promise<boolean> {
     const res = await this.produtosServicoRepository.save(produtosServico);
+    console.log(res.idProdutosServico);
     return res.idProdutosServico > 0;
   }
 
@@ -56,7 +57,9 @@ export class ProdutosServicoService {
   }
 
   async deletarPorIdTipoServico(id: number): Promise<boolean> {
-    const res = await this.produtosServicoService.delete({ idTipoServico: id });
+    const res = await this.produtosServicoRepository.delete({
+      idTipoServico: id,
+    });
 
     return res.affected > 0;
   }

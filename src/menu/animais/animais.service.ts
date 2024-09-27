@@ -13,6 +13,7 @@ export class AnimaisService {
 
   async create(animais: Animais): Promise<boolean> {
     const res = await this.animaisRepository.save(animais);
+    console.log(res.idAnimal);
     return res.idAnimal > 0;
   }
 
