@@ -10,10 +10,9 @@ export class ProdutosServicoService {
     private produtosServicoRepository: Repository<ProdutosServico>,
   ) {}
 
-  async create(produtosServico: ProdutosServico): Promise<boolean> {
+  async create(produtosServico: ProdutosServico[]): Promise<boolean> {
     const res = await this.produtosServicoRepository.save(produtosServico);
-    console.log(res.idProdutosServico);
-    return res.idProdutosServico > 0;
+    return res.every((el) => el.idProdutosServico > 0);
   }
 
   async findAll(): Promise<ProdutosServico[]> {

@@ -16,7 +16,7 @@ export class ProdutosServicoController {
   ) {}
 
   @Post()
-  create(@Body() produtosServico: ProdutosServico): Promise<boolean> {
+  create(@Body() produtosServico: ProdutosServico[]): Promise<boolean> {
     return this.produtosServicoService.create(produtosServico);
   }
 
